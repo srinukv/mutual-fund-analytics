@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read fund master file
-df = pd.read_csv("data/raw/01_fund_master.csv")
+df = pd.read_csv("../data/raw/01_fund_master.csv")
 
 print("\n========== FUND HOUSES ==========")
 print(df["fund_house"].unique())
