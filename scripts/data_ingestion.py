@@ -1,18 +1,23 @@
 import pandas as pd
-import os
+from pathlib import Path
 
-data_folder = "../data/raw"
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-csv_files = [f for f in os.listdir(data_folder) if f.endswith(".csv")]
+data_folder = BASE_DIR / "data" / "raw"
+
+csv_files = [
+    f.name
+    for f in data_folder.glob("*.csv")
+]
 
 print(f"Found {len(csv_files)} CSV files")
 
 for file in csv_files:
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("FILE:", file)
 
-    df = pd.read_csv(os.path.join(data_folder, file))
+    df = pd.read_csv(data_folder / file)
 
     print("Shape:", df.shape)
 
